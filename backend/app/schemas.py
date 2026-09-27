@@ -21,6 +21,16 @@ class ActionResult(BaseModel):
     entry: dict[str, Any] | None = None
 
 
+class LocateResult(BaseModel):
+    """定位条结果：目标行 id、容量区间内匹配数与重排后的列表。"""
+
+    ok: bool
+    message: str
+    target_id: int | None = None
+    matched: int = 0
+    items: list[dict[str, Any]] = Field(default_factory=list)
+
+
 class EntryPayload(BaseModel):
     """登记或修改一条业务记录时提交的字段集合。"""
 
